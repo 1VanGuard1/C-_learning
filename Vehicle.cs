@@ -101,7 +101,7 @@ namespace C__learning
         }
 
 
-        public Car(string brand, string model, int year, int mileage, int numberOfDoors) : base(brand, model, year, mileage) 
+        public Car(string brand, string model, int year, int mileage, int numberOfDoors, Engine engine) : base(brand, model, year, mileage, engine) 
         {
             NumberOfDoors = numberOfDoors;
             LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
@@ -145,7 +145,7 @@ namespace C__learning
             }
         }
 
-        public Truck(string brand, string model, int year, int mileage, double maxLoadKg) : base(brand, model, year, mileage)
+        public Truck(string brand, string model, int year, int mileage, double maxLoadKg, Engine engine) : base(brand, model, year, mileage, engine)
         {
             LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
             MaxLoadKg = maxLoadKg;
@@ -188,7 +188,7 @@ namespace C__learning
             }
         }
 
-        public Motorcycle(string brand, string model, int year, int mileage, double engineVolumeLiters) : base(brand, model, year, mileage)
+        public Motorcycle(string brand, string model, int year, int mileage, double engineVolumeLiters, Engine engine) : base(brand, model, year, mileage, engine)
         {
             LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
             EngineVolumeLiters = engineVolumeLiters;
@@ -233,9 +233,10 @@ namespace C__learning
                 _type = value;
             }
         }
-        public Engine(double power)
+        public Engine(double power, string type)
         {
             Power = power;
+            Type = type;
         }
     }
 }
