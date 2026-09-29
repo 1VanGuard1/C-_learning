@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace CSharpLearning.Models
+﻿namespace CSharpLearning.Models
 {
     public abstract class Vehicle
     {
@@ -13,14 +7,14 @@ namespace CSharpLearning.Models
         public string Model { get; set; }
 
         public int Year { get; set; }
-        public int Mileage { get; set; }
+        public int Mileage { get; private set; }
 
         public Vehicle(string brand, string model, int year, int mileage, Engine engine)
         {
             ArgumentException.ThrowIfNullOrEmpty(brand);
             ArgumentException.ThrowIfNullOrEmpty(model);
             ArgumentOutOfRangeException.ThrowIfLessThan(year, 1886);
-            ArgumentOutOfRangeException.ThrowIfLessThan(year, 0);
+            ArgumentOutOfRangeException.ThrowIfLessThan(mileage, 0);
             ArgumentNullException.ThrowIfNull(engine);
 
 

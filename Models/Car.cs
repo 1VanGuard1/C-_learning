@@ -8,17 +8,8 @@
 
         public Car(string brand, string model, int year, int mileage, int numberOfDoors, Engine engine) : base(brand, model, year, mileage, engine)
         {
-            ArgumentException.ThrowIfNullOrEmpty(brand);
-            ArgumentException.ThrowIfNullOrEmpty(model);
-            ArgumentOutOfRangeException.ThrowIfLessThan(year, 1886);
-            ArgumentOutOfRangeException.ThrowIfLessThan(mileage, 0);
             ArgumentOutOfRangeException.ThrowIfLessThan(numberOfDoors, 0);
-            ArgumentNullException.ThrowIfNull(engine);
 
-            Brand = brand;
-            Model = model;
-            Year = year;
-            Mileage = mileage;
             NumberOfDoors = numberOfDoors;
             LastServiceDate = DateOnly.FromDateTime(DateTime.Now);            
         }
