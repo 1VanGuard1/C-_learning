@@ -1,6 +1,7 @@
-﻿using System;
+﻿using CSharpLearning.Models;
+using System;
 
-namespace C__learning
+namespace CSharpLearning
 {
     internal class Program
     {

@@ -1,39 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace C__learning
+﻿namespace CSharpLearning.Models
 {
-
     public class Truck : Vehicle, IMaintainable
     {
-        DateOnly _lastServiceDate;
-        public DateOnly LastServiceDate
-        {
-            get => _lastServiceDate;
-            set
-            {
-                if (value.ToString().Length == 0)
-                    throw new ArgumentException();
-                _lastServiceDate = value;
-            }
-        }
-        double _maxLoadKg;
-        public double MaxLoadKg
-        {
-            get => _maxLoadKg;
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException();
-                _maxLoadKg = value;
-            }
-        }
-
+        public DateOnly LastServiceDate { get; set; }
+        public double MaxLoadKg { get; set; }
+        
         public Truck(string brand, string model, int year, int mileage, double maxLoadKg, Engine engine) : base(brand, model, year, mileage, engine)
         {
+            ArgumentOutOfRangeException.ThrowIfLessThan(maxLoadKg, 0);
             LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
             MaxLoadKg = maxLoadKg;
         }
