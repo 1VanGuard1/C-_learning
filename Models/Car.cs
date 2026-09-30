@@ -2,7 +2,7 @@
 {
     public class Car : Vehicle, IMaintainable
     {
-        public int NumberOfDoors { get; set; }
+        public int NumberOfDoors { get; private set; }
         public DateOnly LastServiceDate { get; set; }
 
 

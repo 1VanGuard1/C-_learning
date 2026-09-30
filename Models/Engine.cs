@@ -2,11 +2,11 @@
 {
     public class Engine
     {
-        public double Power { get; set; }
-        public string Type { get; set; }
+        public double Power { get; private set; }
+        public string Type { get; private set; }
         public Engine(double power, string type)
         {
-            ArgumentOutOfRangeException.ThrowIfLessThan(power, 0);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(power);
             ArgumentException.ThrowIfNullOrWhiteSpace(type);
 
             Power = power;

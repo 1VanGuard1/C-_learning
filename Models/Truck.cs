@@ -3,8 +3,8 @@
     public class Truck : Vehicle, IMaintainable
     {
         public DateOnly LastServiceDate { get; set; }
-        public double MaxLoadKg { get; set; }
-        
+        public double MaxLoadKg { get; private set; }
+
         public Truck(string brand, string model, int year, int mileage, double maxLoadKg, Engine engine) : base(brand, model, year, mileage, engine)
         {
             ArgumentOutOfRangeException.ThrowIfLessThan(maxLoadKg, 0);

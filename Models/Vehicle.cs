@@ -3,10 +3,10 @@
     public abstract class Vehicle
     {
         Engine engine;
-        public string Brand { get; set; }
-        public string Model { get; set; }
+        public string Brand { get; private set; }
+        public string Model { get; private set; }
 
-        public int Year { get; set; }
+        public int Year { get; private set; }
         public int Mileage { get; private set; }
 
         public Vehicle(string brand, string model, int year, int mileage, Engine engine)
