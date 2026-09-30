@@ -11,8 +11,8 @@
 
         public Vehicle(string brand, string model, int year, int mileage, Engine engine)
         {
-            ArgumentException.ThrowIfNullOrEmpty(brand);
-            ArgumentException.ThrowIfNullOrEmpty(model);
+            ArgumentException.ThrowIfNullOrWhiteSpace(brand);
+            ArgumentException.ThrowIfNullOrWhiteSpace(model);
             ArgumentOutOfRangeException.ThrowIfLessThan(year, 1886);
             ArgumentOutOfRangeException.ThrowIfLessThan(mileage, 0);
             ArgumentNullException.ThrowIfNull(engine);

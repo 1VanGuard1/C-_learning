@@ -7,7 +7,7 @@
         public Engine(double power, string type)
         {
             ArgumentOutOfRangeException.ThrowIfLessThan(power, 0);
-            ArgumentException.ThrowIfNullOrEmpty(type);
+            ArgumentException.ThrowIfNullOrWhiteSpace(type);
 
             Power = power;
             Type = type;
