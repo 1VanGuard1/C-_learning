@@ -10,7 +10,7 @@ namespace CSharpLearning
             string VIN = new string("12345678901234567");
             string VIN1 = new string("12345678901234568");
             string VIN2 = new string("12345678901234562");
-            Engine engine = new Engine(500, "v12", Engine.FuelType.Electric);
+            Engine engine = new Engine(500, 2000, "v12", Engine.FuelType.Electric);
             Car car = new Car("VW", "Golf mk4", 2000, 15000, 5, engine, VIN);
             car.PerformMaintenance();
             car.Drive(15);

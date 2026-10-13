@@ -9,13 +9,7 @@
 
         public int Year { get; private set; }
         public int Mileage { get; private set; }
-        public string VIN {  get; 
-            private set
-            {
-                if (value.Length != 17)
-                    throw new ArgumentException("Неверная длинна VIN");
-            }
-        }
+        public string VIN {  get; }
         public DateOnly LastServiceDate { get; set; }
 
         protected Vehicle(string brand, string model, int year, int mileage, Engine engine, String vin)
@@ -33,7 +27,10 @@
             Year = year;
             Mileage = mileage;
             this.engine = engine;
-            VIN = vin;
+
+            if (vin.Length != 17)
+                throw new ArgumentException("Неверная длинна VIN", nameof(vin));
+            VIN = vin.ToUpper();
         }
         public abstract void StartEngine();
         public override string ToString()

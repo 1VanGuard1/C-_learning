@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public interface IMaintainable
 {
-    DateOnly LastServiceDate { get; protected set; }
+    DateOnly LastServiceDate { get;}
     void PerformMaintenance();
 }
 
