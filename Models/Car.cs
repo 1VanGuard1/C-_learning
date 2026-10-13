@@ -1,31 +1,27 @@
-﻿namespace CSharpLearning.Models
+﻿using System.Text;
+
+namespace CSharpLearning.Models
 {
-    public class Car : Vehicle, IMaintainable
+    public class Car : Vehicle
     {
         public int NumberOfDoors { get; private set; }
-        public DateOnly LastServiceDate { get; set; }
 
-
-        public Car(string brand, string model, int year, int mileage, int numberOfDoors, Engine engine) : base(brand, model, year, mileage, engine)
+        public Car(string brand, string model, int year, int mileage, int numberOfDoors, Engine engine, string vin) : base(brand, model, year, mileage, engine, vin)
         {
             ArgumentOutOfRangeException.ThrowIfLessThan(numberOfDoors, 0);
 
-            NumberOfDoors = numberOfDoors;
-            LastServiceDate = DateOnly.FromDateTime(DateTime.Now);            
+            NumberOfDoors = numberOfDoors;         
         }
         public override void StartEngine()
         {
             Console.WriteLine("Врум-врум");
         }
-        public override void GetInfo()
+        public override string ToString()
         {
-            base.GetInfo();
-            Console.WriteLine($"NumberOfDoors: {NumberOfDoors}");
-        }
-        public void PerformMaintenance()
-        {
-            LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
-            Console.WriteLine("ТО для автомобиля выполнена");
+            StringBuilder info = new StringBuilder();
+            info.AppendLine(base.ToString());
+            info.AppendLine($"NumberOfDoors: {NumberOfDoors}");
+            return info.ToString();
         }
     }
 }

@@ -1,33 +1,44 @@
 ﻿namespace CSharpLearning.Models
 {
-    public abstract class Vehicle
+    public abstract class Vehicle : IMaintainable
     {
+
         Engine engine;
         public string Brand { get; private set; }
         public string Model { get; private set; }
 
         public int Year { get; private set; }
         public int Mileage { get; private set; }
+        public string VIN {  get; 
+            private set
+            {
+                if (value.Length != 17)
+                    throw new ArgumentException("Неверная длинна VIN");
+            }
+        }
+        public DateOnly LastServiceDate { get; set; }
 
-        public Vehicle(string brand, string model, int year, int mileage, Engine engine)
+        protected Vehicle(string brand, string model, int year, int mileage, Engine engine, String vin)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(brand);
             ArgumentException.ThrowIfNullOrWhiteSpace(model);
             ArgumentOutOfRangeException.ThrowIfLessThan(year, 1886);
             ArgumentOutOfRangeException.ThrowIfLessThan(mileage, 0);
             ArgumentNullException.ThrowIfNull(engine);
+            
 
-
+            LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
             Brand = brand;
             Model = model;
             Year = year;
             Mileage = mileage;
             this.engine = engine;
+            VIN = vin;
         }
         public abstract void StartEngine();
-        public virtual void GetInfo()
+        public override string ToString()
         {
-            Console.WriteLine($"Brand: {Brand}\nModel: {Model}\nYear: {Year}\nMileage: {Mileage}");
+            return ($"Brand: {Brand}\nModel: {Model}\nYear: {Year}\nMileage: {Mileage}");
         }
         public void Drive(int km)
         {
@@ -35,6 +46,13 @@
                 throw new ArgumentException();
             Mileage += km;
         }
+
+        public void PerformMaintenance()
+        {
+            LastServiceDate = DateOnly.FromDateTime(DateTime.Now);
+            Console.WriteLine("ТО для автомобиля выполнена");
+        }
     }
 }
+
 
